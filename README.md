@@ -17,11 +17,6 @@
 | L3  | RestAssured framework  | E2E framework creation  | :dancer: | 
 | L4  | Additional Skills  | Dockers, charles proxyetc  | :star:  | 
 =======
-| L0  | Content Cell  |  Content Cell  | :clock1:  | 
-| L1  | Content Cell  | Content Cell  | xx  | 
-| L2- | ------------- | ------------- | :simple_smile: |
-| L3  | Content Cell  | Content Cell  | xx | 
-| L4  | Content Cell  | Content Cell  | xx  | 
 >>>>>>> 2571e91b6838e3c3479d810bd063c37d9c1e2cf3
 
  
