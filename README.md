@@ -12,8 +12,6 @@
 | :-------:|:--------:|:-----------|:---------:|
 | L0 | Swagger and Postman | Gain basic unerstanding wrt setup  along with Command Prompt  commands | :smile: | 
 | L1 | Swagger and Postman | Able to run all postman calls with given data | :clock1: | 
-| L2 | Get expertis on Postman | Able to Run automated tests correctly | :simple_smile: |
+| L2 | Get expertis on Postman | Able to Run automated tests correctly | :boom: |
 | L3 | RestAssured framework | E2E framework creation | :dancer: | 
-| L4 | Additional Skills | Dockers, charles proxyetc | :star: | 
-
- 
+| L4 | Additional Skills | Dockers, charles proxyetc | :star: |
