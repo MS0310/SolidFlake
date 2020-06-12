@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "329c5fb7-4d1d-4739-8798-d523b3ff2463",
+		"name": "Manual TestS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Scenario1 Manual test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bc760a2-ff7a-4b5f-bfa1-e26c2f206408",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"title1\");",
+							"    pm.expect(pm.response.text()).to.include(\"location_type\");",
+							"    pm.expect(pm.response.text()).to.include(\"woeid\");",
+							"    pm.expect(pm.response.text()).to.include(\"latt_long\");",
+							"});",
+							"",
+							"pm.test(\"expected 44418 at woeid\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(woeid).to.eql(44418);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.metaweather.com/api/location/search/?query=london",
+					"protocol": "https",
+					"host": [
+						"www",
+						"metaweather",
+						"com"
+					],
+					"path": [
+						"api",
+						"location",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "london"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
