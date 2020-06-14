@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "cbced9aa-1b05-4a19-b3ac-2de54a269930",
+		"name": "PMScriptCollection",
+		"description": "this is for demo purpose",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GETChainingRedRes",
+			"item": [
+				{
+					"name": "Chaining 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7d37b0e-4e69-440a-aff3-91c423ee04d5",
+								"exec": [
+									"",
+									"var jsonData = pm.response.json();",
+									"var value1 = jsonData[0].woeid;",
+									"console.log(value1);",
+									"",
+									"//set env variable ",
+									"",
+									"pm.environment.set(\"woeid\", value1);",
+									"",
+									"console.log(pm.environment.get(\"woeid\"));",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Title Validation\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var expectedTitle = jsonData[0].title;",
+									"    var actualTitle = \"London\";",
+									"pm.expect(expectedTitle).equal(actualTitle, \"Title Validtion match failed\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chaining2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49d2df7f-ad9d-4e2d-a246-13c5a63afd53",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response value\", function () {",
+									"      var jsonData = pm.response.json();",
+									"      var titleVar1 = jsonData.title;",
+									"      var titleVar2 = \"London\";",
+									"      if(pm.expect(titleVar1).equal(titleVar2, \"Does not match with expected value \" + titleVar2)){",
+									"            //console.log(jsonData.title);",
+									"            console.log(\"Expected value is \" + titleVar2 + \" :Value received was: \" + titleVar1 + \" <<Test Passed>>\");",
+									"      }",
+									"      ",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/{{woeid}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"{{woeid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ManualPMTest",
+			"item": [
+				{
+					"name": "GETLocationTest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetWoeidAPI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
