@@ -35,7 +35,7 @@
 									"pm.test(\"Title Validation\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    var expectedTitle = jsonData[0].title;",
-									"    var actualTitle = \"London\";",
+									"    var actualTitle = \"london\";",
 									"pm.expect(expectedTitle).equal(actualTitle, \"Title Validtion match failed\");",
 									"});"
 								],
@@ -99,9 +99,21 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "https://www.metaweather.com/api/location/{{woeid}}",
 							"protocol": "https",
@@ -123,7 +135,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "ManualPMTest",
+			"name": "ManualPMGETTest",
 			"item": [
 				{
 					"name": "GETLocationTest",
@@ -131,7 +143,25 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
 						}
 					},
 					"response": []
@@ -142,7 +172,198 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "https://www.metaweather.com/api/location/44418",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"44418"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PutUpdateScripts",
+			"item": [
+				{
+					"name": "PutRequest1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c55c92c8-32db-4bb3-97b2-49ab8e8e0af0",
+								"exec": [
+									"",
+									"var jsonData = pm.response.json();",
+									"var recvdlVar1 = jsonData.job;",
+									"",
+									"console.log(recvdlVar1);",
+									"",
+									"expectedVal1=\"zion resident\";",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    if (pm.expect(recvdlVar1).equal(expectedVal1 , \"Not Matched with \" + expectedVal1))",
+									"    {",
+									"        console.log(\"ExpectedVal1 is\" + expectedVal1 + \"value recieved is \" + recvdlVar1 + \"Pass\")",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"zion resident\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PostCreateScripts",
+			"item": [
+				{
+					"name": "PostScripts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8553dd5f-1db9-469b-9612-b4f3ee41454c",
+								"exec": [
+									"",
+									"",
+									"var jsonData = pm.response.json();",
+									"Actualvalue1 = jsonData.name;",
+									"console.log(Actualvalue1);",
+									"",
+									"pm.test(\"Names Validation\", function () {",
+									"    var ExpectedValue1 = \"morpheus\";",
+									"pm.expect(ExpectedValue1).equal(Actualvalue1, \"Names Validtion match\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GetScripts",
+			"item": [
+				{
+					"name": "GetListUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "94a239d2-cb99-41ab-a453-323f7d657e77",
+								"exec": [
+									"// take the name from file and assert if response body have this name ",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    console.log(\"Status code function Pass\")",
+									"});",
+									"",
+									"",
+									"pm.test(\"Get value from file and assert the value\", function () {",
+									"   console.log(\"Data driven test\");",
+									"   var jsonData = pm.response.json();",
+									"   var recvdName = jsonData.data[0].first_name;",
+									"   console.log(recvdName);",
+									"   pm.expect(recvdName).to.equal(pm.iterationData.get(\"Name\"));",
+									"   ",
+									"   ",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
 						}
 					},
 					"response": []
