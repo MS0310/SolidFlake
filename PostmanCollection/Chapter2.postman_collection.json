@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "60caa36c-8a53-48da-958b-6d3e984c2026",
+		"name": "Chapter2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "APIRequests",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TestScriptsusingVaribales",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TestScripts",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "APIWorkflow Github",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Advanced Assertion",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "WorkflowScenario",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AutoRun Tests",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Data Driven wid Big data",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TestScripts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "b3335832-325c-4d90-8a5c-67b8f7016f99",
+		"name": "Chapter1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateCollectiions",
+			"item": [
+				{
+					"name": "Request1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/44418",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"44418"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Variables",
+			"item": [
+				{
+					"name": "Request3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dfd09bc2-8a28-4a3b-8d19-d90bff359ee2",
+								"exec": [
+									"",
+									"// declare a variable",
+									"",
+									"var jsonData = pm.response.json();",
+									"//var testGlobalVar2;",
+									"var globalvar = pm.globals.get(testGlobalVar2);",
+									"",
+									"// storing value in variable var1",
+									"var var1 = jsonData[0].title;",
+									"",
+									"// Display the value of variable in Console",
+									"console.log(var1);",
+									"",
+									"// setting value ",
+									"",
+									"var globalvar = pm.globals.get(testGlobalVar2);",
+									"console.log(globalvar);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/44418",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"44418"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Environments",
+			"item": [
+				{
+					"name": "Request5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/44418",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"44418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b987300e-a78f-4519-aba1-f7b4b0baa3f4",
+								"exec": [
+									"",
+									"// declare a variable",
+									"",
+									"var jsonData = pm.response.json();",
+									"",
+									"// storing value in variable var1",
+									"var var1 = jsonData[0].title;",
+									"",
+									"// Display the value of variable in Console",
+									"console.log(var1);",
+									"",
+									"// setting value ",
+									"",
+									"",
+									"//pm.variables.get(var1);",
+									"console.log(pm.variables.get(var1));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TestScriptsCreation",
+			"item": [
+				{
+					"name": "Request7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b06596d-3e01-48ac-ae5b-21ef70cab0e8",
+								"exec": [
+									"",
+									"// declare a variable",
+									"",
+									"var jsonData = pm.response.json();",
+									"",
+									"// storing value in variable var1",
+									"var var1 = jsonData[0].title;",
+									"var var2 = jsonData[0].woeid;",
+									"",
+									"// Display the value of variable in Console",
+									"console.log(var1);",
+									"console.log(var2);",
+									"",
+									"// Asserting woeid value ",
+									"",
+									"pm.test(\"Asserting woeid value \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData[0].woeid).to.eql(44418);",
+									"    console.log();",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/search/?query=london",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutRequest9",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db34f4af-0f54-4995-98e8-75cef9d7141c",
+								"exec": [
+									"",
+									"var jsonData = pm.response.json();",
+									"var recvdlVar1 = jsonData.job;",
+									"",
+									"console.log(recvdlVar1);",
+									"",
+									"expectedVal1=\"zion resident\";",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    if (pm.expect(recvdlVar1).equal(expectedVal1 , \"Not Matched with \" + expectedVal1))",
+									"    {",
+									"        console.log(\" ExpectedVal1 is \" + expectedVal1 + \" value recieved is \" + recvdlVar1 + \" Pass \")",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"zion resident\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostScripts10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5ef93cde-1b6b-480b-a2d8-1275de43fb1e",
+								"exec": [
+									"",
+									"",
+									"var jsonData = pm.response.json();",
+									"Actualvalue1 = jsonData.name;",
+									"console.log(Actualvalue1);",
+									"",
+									"pm.test(\"Names Validation\", function () {",
+									"    var ExpectedValue1 = \"morpheus\";",
+									"pm.expect(ExpectedValue1).equal(Actualvalue1, \"Names Validtion match\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DataDrivenTest",
+			"item": [
+				{
+					"name": "PostScripts11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfdae6dd-69a7-4fb3-8d71-0d5718430b6c",
+								"exec": [
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ClientName\",\n    \"job\": \"leader1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Authorization",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CommandLine and Jenkins",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "WorkspaceDocumentationMonitors",
+			"item": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

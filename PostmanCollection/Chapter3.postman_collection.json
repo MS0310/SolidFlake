@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "84194842-487f-4c56-a296-429d6d739851",
+		"name": "Chapter3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CollectionEnviornment",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "SOAPusingPostman",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MultipartFileUpload",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ProxyNetworkTraffic",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "MockServer",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DataDriven",
+			"item": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
