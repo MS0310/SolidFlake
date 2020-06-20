@@ -10,8 +10,9 @@
 
 | Levels  | Skills | Comments  | Progress |
 | :-------:|:--------:|:-----------|:---------:|
-| L0 | Swagger and Postman | Gain basic unerstanding wrt setup  along with Command Prompt  commands | :smile: | 
-| L1 | Swagger and Postman | Able to run all postman calls with given data | :clock1: | 
-| L2 | Get expertis on Postman | Able to Run automated tests correctly | :boom: |
-| L3 | RestAssured framework | E2E framework creation | :dancer: | 
-| L4 | Additional Skills | Dockers, charles proxyetc | :star: |
+| L0 | Swagger and Postman | Run all PM requests manually and  using cmd and PM app | :ballot_box_with_check: | 
+| L1 | Swagger and Postman | Ran automatic scripts in PM using  collection, variables,Enviornments, Data driven, chaining cncept| :ballot_box_with_check: | 
+| L2 | Integerate Postman with Jenkins | Able to integerate PM with jenkins and successfully ran scheduled jobs | :ballot_box_with_check: |
+| L3 | RestAssured framework | E2E framework creation | :sweat: | 
+| L4 | Additional Skills | AWS, Dockers, charles proxy etc | :star: |
+| L5 | Python | Understanding and practical implementation using Python using ??? editor | :lock:
