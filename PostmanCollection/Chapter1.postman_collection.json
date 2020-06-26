@@ -9,7 +9,7 @@
 			"name": "CreateCollectiions",
 			"item": [
 				{
-					"name": "ManualGetReqAssertPending",
+					"name": "ManualGetReqAssert",
 					"event": [
 						{
 							"listen": "test",
@@ -224,7 +224,7 @@
 								"id": "1a2cfa3d-5e25-406f-8238-163da4678975",
 								"exec": [
 									"/* pre- condition: ",
-									"      1. Create \"Chaining enviornment\" and select the enviornment .",
+									"      1. Create \"Chaining Enviornment\" and select the enviornment .",
 									"      2. Under Above Enviornment, add a variable name \"woeid\" with value = 44418",
 									"",
 									"*/",
