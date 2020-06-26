@@ -155,29 +155,34 @@
 			"name": "Environments",
 			"item": [
 				{
-					"name": "GetReqEnv",
+					"name": "ChainingReq1",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "2b50763d-c033-41f4-80f3-4c34ce15fef5",
+								"id": "1ad0e52b-8236-4b00-a698-74362d65aa63",
 								"exec": [
 									"",
-									"// declare a variable",
-									"",
 									"var jsonData = pm.response.json();",
+									"var value1 = jsonData[0].woeid;",
+									"console.log(value1);",
 									"",
-									"// storing value in variable var1",
-									"var var1 = jsonData[0].title;",
+									"//set env variable ",
 									"",
-									"// Display the value of variable in Console",
-									"console.log(var1);",
+									"pm.environment.set(\"woeid\", value1);",
 									"",
-									"// setting value ",
+									"console.log(pm.environment.get(\"woeid\"));",
 									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
 									"",
-									"//pm.variables.get(var1);",
-									"console.log(pm.variables.get(var1));"
+									"pm.test(\"Title Validation\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var expectedTitle = jsonData[0].title;",
+									"    var actualTitle = \"london\";",
+									"pm.expect(expectedTitle).equal(actualTitle, \"Title Validtion match failed\");",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -205,6 +210,73 @@
 									"key": "query",
 									"value": "london"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChainingReq2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a2cfa3d-5e25-406f-8238-163da4678975",
+								"exec": [
+									"/* pre- condition: ",
+									"      1. Create \"Chaining enviornment\" and select the enviornment .",
+									"      2. Under Above Enviornment, add a variable name \"woeid\" with value = 44418",
+									"",
+									"*/",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response value\", function () {",
+									"      var jsonData = pm.response.json();",
+									"      var titleVar1 = jsonData.title;",
+									"      var titleVar2 = \"London\";",
+									"      if(pm.expect(titleVar1).equal(titleVar2, \"Does not match with expected value \" + titleVar2)){",
+									"            //console.log(jsonData.title);",
+									"            console.log(\"Expected value is \" + titleVar2 + \" :Value received was: \" + titleVar1 + \" <<Test Passed>>\");",
+									"      }",
+									"      ",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://www.metaweather.com/api/location/{{woeid}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"metaweather",
+								"com"
+							],
+							"path": [
+								"api",
+								"location",
+								"{{woeid}}"
 							]
 						}
 					},
