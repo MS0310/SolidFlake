@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3335832-325c-4d90-8a5c-67b8f7016f99",
+		"_postman_id": "6733fcb2-49e6-4106-836f-dc31d07294ce",
 		"name": "Chapter1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,89 +9,43 @@
 			"name": "CreateCollectiions",
 			"item": [
 				{
-					"name": "Request1",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://www.metaweather.com/api/location/search/?query=london",
-							"protocol": "https",
-							"host": [
-								"www",
-								"metaweather",
-								"com"
-							],
-							"path": [
-								"api",
-								"location",
-								"search",
-								""
-							],
-							"query": [
-								{
-									"key": "query",
-									"value": "london"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Request2",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://www.metaweather.com/api/location/44418",
-							"protocol": "https",
-							"host": [
-								"www",
-								"metaweather",
-								"com"
-							],
-							"path": [
-								"api",
-								"location",
-								"44418"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Variables",
-			"item": [
-				{
-					"name": "Request3",
+					"name": "ManualGetReqAssertPending",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "dfd09bc2-8a28-4a3b-8d19-d90bff359ee2",
+								"id": "b19a9b4d-0270-4300-8c79-e66f79c3a4f5",
 								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
 									"",
-									"// declare a variable",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"title\");",
+									"    pm.expect(pm.response.text()).to.include(\"location_type\");",
+									"    pm.expect(pm.response.text()).to.include(\"woeid\");",
+									"    pm.expect(pm.response.text()).to.include(\"latt_long\");",
+									"});",
 									"",
-									"var jsonData = pm.response.json();",
-									"//var testGlobalVar2;",
-									"var globalvar = pm.globals.get(testGlobalVar2);",
 									"",
-									"// storing value in variable var1",
-									"var var1 = jsonData[0].title;",
 									"",
-									"// Display the value of variable in Console",
-									"console.log(var1);",
+									"pm.test(\"Check response value\", function () {",
+									"      var jsonData = pm.response.json();",
+									"      var titleVar1 = jsonData.title;",
+									"      var titleVar2 = \"London\";",
+									"      if(pm.expect(titleVar1).equal(titleVar2 + \"Does not match with expected value \" + titleVar2)){",
+									"            //console.log(jsonData.title);",
+									"            console.log(\"Expected value is \" + titleVar2 + \" :Value received was: \" + titleVar1 + \" <<Test Passed>>\");",
+									"      }",
+									"      ",
+									"});",
 									"",
-									"// setting value ",
-									"",
-									"var globalvar = pm.globals.get(testGlobalVar2);",
-									"console.log(globalvar);",
-									"",
-									""
+									"/*",
+									"pm.test(\"expected 44418 at woeid\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(woeid).to.eql(44418);",
+									"});",
+									"*/"
 								],
 								"type": "text/javascript"
 							}
@@ -123,24 +77,72 @@
 						}
 					},
 					"response": []
-				},
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Variables",
+			"item": [
 				{
-					"name": "Request4",
+					"name": "GetSetGlobalsEnv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35647ec5-5200-444a-b457-41178c3a16ff",
+								"exec": [
+									"",
+									"// getting  global variables",
+									"var globalvar1 = pm.globals.get(\"gVar1\");",
+									"console.log(globalvar1);",
+									"",
+									"// setting second global variables",
+									"var globalvar3 = pm.globals.get(\"gVar2\");",
+									"console.log(\"Second Global variable value is \" + globalvar3);",
+									"",
+									"",
+									"pm.globals.set(\"gVar2\",\"updatedval\");",
+									"var globalvar3 =  pm.globals.get(\"gVar2\");",
+									"console.log(\"Setting Second Global variable value to \" + globalvar3);",
+									"",
+									"// get an Enviornment variable ",
+									"",
+									"console.log(pm.environment.get(\"url\"));",
+									"",
+									"// set an enviornment variable",
+									"",
+									"pm.environment.set(\"Env\", \"updatedEnvVal\");",
+									"var envVar = pm.environment.get(\"Env\");",
+									"console.log(envVar);",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://www.metaweather.com/api/location/44418",
-							"protocol": "https",
+							"raw": "{{url}}/api/location/search/?query=london",
 							"host": [
-								"www",
-								"metaweather",
-								"com"
+								"{{url}}"
 							],
 							"path": [
 								"api",
 								"location",
-								"44418"
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "london"
+								}
 							]
 						}
 					},
@@ -153,34 +155,12 @@
 			"name": "Environments",
 			"item": [
 				{
-					"name": "Request5",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://www.metaweather.com/api/location/44418",
-							"protocol": "https",
-							"host": [
-								"www",
-								"metaweather",
-								"com"
-							],
-							"path": [
-								"api",
-								"location",
-								"44418"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Request6",
+					"name": "GetReqEnv",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "b987300e-a78f-4519-aba1-f7b4b0baa3f4",
+								"id": "2b50763d-c033-41f4-80f3-4c34ce15fef5",
 								"exec": [
 									"",
 									"// declare a variable",
@@ -237,12 +217,12 @@
 			"name": "TestScriptsCreation",
 			"item": [
 				{
-					"name": "Request7",
+					"name": "AssertGetRequest",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "8b06596d-3e01-48ac-ae5b-21ef70cab0e8",
+								"id": "2eefef64-e155-492f-a3a4-87d582438409",
 								"exec": [
 									"",
 									"// declare a variable",
@@ -297,12 +277,12 @@
 					"response": []
 				},
 				{
-					"name": "PutRequest9",
+					"name": "AssertPutRequest",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "db34f4af-0f54-4995-98e8-75cef9d7141c",
+								"id": "e64aa4fd-f7fc-4218-99d4-f142d5e9a265",
 								"exec": [
 									"",
 									"var jsonData = pm.response.json();",
@@ -354,12 +334,12 @@
 					"response": []
 				},
 				{
-					"name": "PostScripts10",
+					"name": "AssertPostRequest",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "5ef93cde-1b6b-480b-a2d8-1275de43fb1e",
+								"id": "ca87e9b9-155a-426d-b1e4-b05f39a9ed50",
 								"exec": [
 									"",
 									"",
@@ -410,12 +390,12 @@
 			"name": "DataDrivenTest",
 			"item": [
 				{
-					"name": "PostScripts11",
+					"name": "Pending",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "bfdae6dd-69a7-4fb3-8d71-0d5718430b6c",
+								"id": "3c36a900-2078-4d5d-a927-99bbe617b3ac",
 								"exec": [
 									"",
 									"",
